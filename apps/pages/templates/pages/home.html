@@ -1,0 +1,60 @@
+<!-- {% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Home - MephubLK{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="jumbotron text-center text-white" style="background: url('{% static 'images/hero.webp' %}') no-repeat center center; background-size: cover; position: relative; height: 400px;">
+  <div style="background-color: rgba(0,0,0,0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
+  <div class="container" style="position: relative; z-index: 2;">
+    <h1 class="display-4">Connecting Sri Lanka’s Construction Experts with You</h1>
+    <form action="{% url 'profiles:search_results' %}" method="get" class="mt-4">
+      <div class="input-group input-group-lg">
+        <input type="text" name="q" class="form-control" placeholder="Search for Experts...">
+        <button type="submit" class="btn btn-outline-light">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Categories Section -->
+<div class="my-5">
+  <h2 class="text-center">Categories</h2>
+  <div class="row">
+    <!-- Example Category Card -->
+    <div class="col-md-3 text-center">
+      <div class="card">
+        <div class="card-body">
+          <img src="{% static 'images/category1.svg' %}" alt="Category Icon" style="width:60px;">
+          <h5 class="card-title mt-2">Consultants</h5>
+          <p class="card-text">Expert advice for your projects.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Repeat cards for other categories -->
+  </div>
+</div>
+
+<!-- Featured Profiles / Projects Section -->
+<div class="my-5">
+  <h2 class="text-center">Featured Profiles</h2>
+  <!-- Use a carousel or grid layout -->
+  <!-- For simplicity, a grid is used here -->
+  <div class="row">
+    <!-- Example Featured Profile -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="{% static 'images/expert1.jpg' %}" class="card-img-top" alt="Expert">
+        <div class="card-body">
+          <h5 class="card-title">John Doe</h5>
+          <p class="card-text">Senior Consultant</p>
+          <a href="{% url 'profiles:profile_detail' 1 %}" class="btn btn-primary">View Profile</a>
+        </div>
+      </div>
+    </div>
+    <!-- Repeat for additional profiles -->
+  </div>
+</div>
+{% endblock %} -->

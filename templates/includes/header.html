@@ -1,0 +1,9 @@
+{% load static %}
+<header class="bg-primary text-white" style="height:70px;">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+            <img src="{% static 'images/logo.svg' %}" alt="MephubLK Logo" style="height:50px;">
+        </div>
+        {% include "includes/nav.html" %}
+    </div>
+</header>

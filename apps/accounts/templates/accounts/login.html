@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Login - MephubLK{% endblock %}
+{% block content %}
+<h2>Admin Login</h2>
+<form method="post">
+  {% csrf_token %}
+  <!-- Add your login form fields here -->
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}
