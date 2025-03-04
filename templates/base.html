@@ -4,9 +4,136 @@
     <meta charset="UTF-8">
     <title>{% block title %}MephubLK{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- Include Bootstrap CSS from CDN -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+        }
+        /* Primary Colors */
+        .bg-primary {
+            background-color: #2C3E50 !important;
+        }
+        .text-primary {
+            color: #2C3E50 !important;
+        }
+        .text-secondary {
+            color: #E67E22 !important;
+        }
+        .btn-accent {
+            background-color: #E67E22;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: none;
+        }
+        .btn-accent:hover {
+            background-color: #cf6d1f;
+            color: #fff;
+        }
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1050;
+        }
+        /* Hero Section */
+        .hero-section {
+            background: url('{% static "images/hero.webp" %}') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        /* Cards */
+        .category-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        .profile-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        /* Testimonial Section */
+        .testimonial-section {
+            background-color: #f7f7f7;
+            padding: 40px 0;
+        }
+        /* Call-to-Action Banner */
+        .cta-banner {
+            background-color: #27AE60;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .cta-banner a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+        }
+        footer a {
+            color: #E67E22;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Container adjustments for fixed header */
+        .container {
+            padding-top: 90px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 24px;
+            }
+            .category-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     {% include "includes/header.html" %}
@@ -15,7 +142,7 @@
         {% endblock %}
     </div>
     {% include "includes/footer.html" %}
-    <!-- Include Bootstrap JS and dependencies -->
+    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

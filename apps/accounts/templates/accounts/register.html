@@ -1,12 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Login - MephubLK{% endblock %}
+{% block title %}Register - MephubLK{% endblock %}
 
 {% block content %}
 {% load static %}
-
 <style>
-  /* Overall container for login page */
-  .login-container {
+  .register-container {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -14,28 +12,26 @@
       background: linear-gradient(135deg, #1F2A44, #415A77);
       padding: 20px;
   }
-  /* The login form box */
-  .login-box {
+  .register-box {
       background: #ffffff;
       padding: 40px;
-      max-width: 400px;
+      max-width: 450px;
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       text-align: center;
   }
-  .login-box h2 {
+  .register-box h2 {
       margin-bottom: 10px;
       color: #1F2A44;
       font-size: 28px;
       font-weight: 700;
   }
-  .login-subtitle {
+  .register-subtitle {
       font-size: 15px;
       color: #6c757d;
       margin-bottom: 25px;
   }
-  /* Input styling */
   .input-group {
       display: flex;
       align-items: center;
@@ -58,8 +54,7 @@
       font-size: 16px;
       color: #343a40;
   }
-  /* Button styling */
-  .btn-login {
+  .btn-register {
       background-color: #E67E22;
       color: #fff;
       border: none;
@@ -71,10 +66,9 @@
       transition: background-color 0.3s ease;
       margin-top: 10px;
   }
-  .btn-login:hover {
+  .btn-register:hover {
       background-color: #cf6d1f;
   }
-  /* Alert messages styling */
   .alert {
       padding: 10px;
       margin-bottom: 15px;
@@ -91,36 +85,33 @@
       color: #721c24;
       border: 1px solid #f5c6cb;
   }
-  /* Links */
-  .register-link, .forgot-password {
+  .login-link {
       font-size: 14px;
       margin-top: 12px;
   }
-  .register-link a, .forgot-password a {
+  .login-link a {
       color: #E67E22;
       text-decoration: none;
       font-weight: 600;
   }
-  .register-link a:hover, .forgot-password a:hover {
+  .login-link a:hover {
       text-decoration: underline;
   }
-  /* Responsive adjustments */
   @media (max-width: 576px) {
-      .login-box {
+      .register-box {
           padding: 30px 20px;
       }
-      .login-box h2 {
+      .register-box h2 {
           font-size: 24px;
       }
   }
 </style>
 
-<div class="login-container">
-    <div class="login-box">
-        <h2>Welcome Back</h2>
-        <p class="login-subtitle">Login to access your professional profile</p>
+<div class="register-container">
+    <div class="register-box">
+        <h2>Create Your Account</h2>
+        <p class="register-subtitle">Join MephubLK and build your professional profile</p>
 
-        <!-- Display Django messages -->
         {% if messages %}
             {% for message in messages %}
                 <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
@@ -132,17 +123,28 @@
         <form method="post">
             {% csrf_token %}
             <div class="input-group">
+                <span class="icon">&#128100;</span>
+                <input type="text" name="full_name" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
                 <span class="icon">&#9993;</span>
                 <input type="email" name="email" placeholder="Email Address" required>
             </div>
             <div class="input-group">
-                <span class="icon">&#128274;</span>
-                <input type="password" name="password" placeholder="Password" required>
+                <span class="icon">&#128222;</span>
+                <input type="text" name="phone" placeholder="Phone Number" required>
             </div>
-            <button type="submit" class="btn-login">Login</button>
+            <div class="input-group">
+                <span class="icon">&#128274;</span>
+                <input type="password" name="password" placeholder="Create Password" required>
+            </div>
+            <div class="input-group">
+                <span class="icon">&#128274;</span>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit" class="btn-register">Register</button>
         </form>
-        <p class="register-link">Don't have an account? <a href="{% url 'accounts:register' %}">Sign up now</a></p>
-        <p class="forgot-password"><a href="/password-reset/">Forgot Password?</a></p>
+        <p class="login-link">Already have an account? <a href="{% url 'accounts:login' %}">Login here</a></p>
     </div>
 </div>
 

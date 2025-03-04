@@ -6,6 +6,6 @@ urlpatterns = [
     # Include custom apps URLs:
     path('', include('apps.pages.urls')),
     path('accounts/', include('apps.accounts.urls')),
-    path('profiles/', include('apps.profiles.urls')),
     path('projects/', include('apps.projects.urls')),
+    
 ]

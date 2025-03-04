@@ -1,25 +1,43 @@
-<footer class="bg-primary text-white mt-4">
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-md-4">
-                <h6>Quick Links</h6>
-                <ul class="list-unstyled">
-                    <li><a href="/" class="text-white">Home</a></li>
-                    <li><a href="/profiles/" class="text-white">Profiles</a></li>
-                    <li><a href="/projects/" class="text-white">Projects</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h6>Contact</h6>
-                <p>123 Main Street, Colombo, Sri Lanka<br>
-                +94 11 123 4567<br>
-                info@mephub.lk</p>
-            </div>
-            <div class="col-md-4">
-                <h6>Follow Us</h6>
-                <a href="#" class="text-white me-2">Facebook</a>
-                <a href="#" class="text-white">LinkedIn</a>
-            </div>
+<footer style="background-color: #2C3E50; color: white; width: 100%; padding: 30px 0; position: relative; bottom: 0;">
+    <div style="max-width: 1140px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; text-align: center;">
+        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+            <h6 style="font-size: 16px; margin-bottom: 10px;">Quick Links</h6>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="/" style="color: white; text-decoration: none; font-size: 14px;">Home</a></li>
+                <li><a href="/profiles/" style="color: white; text-decoration: none; font-size: 14px;">Profiles</a></li>
+                <li><a href="/projects/" style="color: white; text-decoration: none; font-size: 14px;">Projects</a></li>
+            </ul>
+        </div>
+        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+            <h6 style="font-size: 16px; margin-bottom: 10px;">Contact</h6>
+            <p style="font-size: 14px;">123 Main Street, Colombo, Sri Lanka<br>+94 11 123 4567<br>info@mephub.lk</p>
+        </div>
+        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+            <h6 style="font-size: 16px; margin-bottom: 10px;">Follow Us</h6>
+            <a href="#" style="color: white; text-decoration: none; font-size: 14px; margin-right: 10px;">Facebook</a>
+            <a href="#" style="color: white; text-decoration: none; font-size: 14px;">LinkedIn</a>
         </div>
     </div>
+    <div style="text-align: center; margin-top: 20px; font-size: 12px; opacity: 0.7;">© 2025 Mephub. All Rights Reserved.</div>
 </footer>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+    }
+    main {
+        flex: 1;
+        padding: 20px;
+    }
+    footer a:hover {
+        text-decoration: underline;
+    }
+    @media screen and (max-width: 768px) {
+        footer div {
+            text-align: center;
+        }
+    }
+</style>
