@@ -3,70 +3,352 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login & Register</title>
-<link href="https://fonts.googleapis.com/css2?family=Aeronaut+Geometric+Sans&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=Righteous&family=Roboto:ital,wght@0,100..900;1,100..900&family=SUSE:wght@100..800&display=swap" rel="stylesheet">@100..800&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Aeronaut Geometric Sans', sans-serif; background: #f4f4f4; color: #333; }
-header { position: fixed; top: 0; left: 0; width: 100%; background: #fff; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; height: 70px; border-bottom: 2px solid #E5E5E5; }
-.logo img { height: 50px; }
-nav ul { list-style: none; display: flex; align-items: center; justify-content: flex-end; gap: 15px; font-size: 16px; color: #333; }
-nav ul li a { text-decoration: none; color: #333; }
-.dropdown { position: relative; }
-.dropdown-content { display: none; position: absolute; background: #fff; min-width: 220px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; z-index: 1001; }
-.dropdown:hover .dropdown-content { display: block; }
-.dropdown-content a { display: block; padding: 10px 15px; text-decoration: none; color: #333; font-weight: 500; }
-.dropdown-content a:hover { background: #f8f9fa; }
-.btn { padding: 8px 15px; border-radius: 4px; font-size: 16px; font-weight: 500; text-decoration: none; transition: all 0.3s ease; }
-.auth-btn { color: #D4A017; border: 2px solid #D4A017; background: transparent; }
-.auth-btn:hover { background: #D4A017; color: #fff; }
-.logout-btn { background: #D4A017; color: #fff; }
-.logout-btn:hover { background: #B58900; }
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1040; }
-.modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 1000px; z-index: 1050; font-family: 'Aeronaut Geometric Sans', sans-serif; display: flex; height: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.3); overflow: hidden; }
-.login-modal, .register-modal { border-radius: 0; }
-.modal-left { flex: 1; position: relative; }
-.modal-left .yellow-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #FACC05; z-index: 1; }
-.modal-left .img-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
-.modal-left .glassy-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(250,204,5,0.4); backdrop-filter: blur(4px); z-index: 3; }
-.modal-left .content { position: relative; z-index: 4; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; color: #000; }
-.modal-left .content h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-.modal-left .content p { font-size: 16px; }
-.modal-right { flex: 2; padding: 30px; background: #fff; display: flex; flex-direction: column; justify-content: center; position: relative; }
-.close-btn { position: absolute; top: 10px; right: 30px; background: transparent; border: none; font-size: 20px; color: #000; cursor: pointer; }
-.form-row { display: flex; align-items: center; margin: 20px 0 15px; }
-.input-label { width: 150px; font-size: 16px; color: #333; }
-.form-input { flex: 1; }
-.form-input input { width: 100%; padding: 10px; border: 1px solid #999; background: #f8f7f7; border-radius: 4px; font-size: 16px; color: #000; transition: background 0.3s, border 0.3s; }
-.form-input input::placeholder { color: #D3D3D3; }
-.form-input input:focus { background: #fff; border: 1px solid #D4A017; }
-.btn-register{
-  width: 50%; padding: 10px; border: 2px solid #D4A017; border-radius: 4px; font-size: 16px; font-weight: 500; background: transparent; color: #D4A017; cursor: pointer; transition: all 0.3s ease; margin: 20px auto 10px; display: block;
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
 }
 
-.btn-login {
-  width: 50%; padding: 10px; border: 2px solid #D4A017; border-radius: 4px; font-size: 16px; font-weight: 500; background: transparent; color: #D4A017; cursor: pointer; transition: all 0.3s ease; margin: 20px auto 10px; display: block;
+body { 
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  background: #f4f4f4; 
+  color: #333; 
+  
 }
-.modal-right button2 { width: 50%; padding: 10px; border: 2px solid #D4A017; border-radius: 4px; font-size: 16px; font-weight: 500; background: transparent; color: #D4A017; cursor: pointer; transition: all 0.3s ease; margin: 20px auto 10px; display: block; }
-.modal-right button:hover { background: #D4A017; color: #fff; }
-.modal-right p { font-size: 14px; color: #D4A017; text-align: center; margin-top: 15px; }
-.modal-right p a { text-decoration: none; color: #D4A017; }
-.modal-right p a:hover { text-decoration: underline; }
+
+/* Header Styles */
+header { 
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  background: #fff; 
+  z-index: 1000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 10px 20px; 
+  height: 70px; 
+  border-bottom: 2px solid #E5E5E5; 
+  
+}
+
+.logo img { 
+  height: 30px; 
+}
+
+nav ul { 
+  list-style: none; 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; 
+  gap: 15px; 
+  font-size: 16px; 
+}
+
+nav ul li a { 
+  text-decoration: none; 
+  color: #333; 
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+  
+}
+
+.dropdown { 
+  position: relative; 
+}
+
+.dropdown-content { 
+  display: none; 
+  position: absolute; 
+  background: #fff; 
+  min-width: 220px; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+  border: none; 
+  z-index: 1001; 
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-weight: 500;
+ 
+}
+
+.dropdown:hover .dropdown-content { 
+  display: block; 
+}
+
+.dropdown-content a { 
+  display: block; 
+  padding: 10px 15px; 
+  text-decoration: none; 
+  color: #333; 
+  font-weight: 500; 
+}
+
+.dropdown-content a:hover { 
+  background: #f8f9fa; 
+}
+
+.btn { 
+  padding: 8px 15px; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  text-decoration: none; 
+  transition: all 0.3s ease; 
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-weight: 500;
+ 
+}
+
+.auth-btn { 
+  color: #D4A017; 
+  border: 2px solid #D4A017; 
+  background: transparent; 
+}
+
+.auth-btn:hover { 
+  background: #D4A017; 
+  color: #fff; 
+}
+
+.logout-btn { 
+  background: #D4A017; 
+  color: #fff; 
+}
+
+.logout-btn:hover { 
+  background: #B58900; 
+}
+
+/* Modal Styles */
+.modal-overlay { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(0,0,0,0.5); 
+  z-index: 1040; 
+}
+
+.modal { 
+  display: none; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 100%; 
+  max-width: 1000px; 
+  z-index: 1050; 
+  display: flex; 
+  height: auto; 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+  overflow: hidden; 
+}
+
+.modal-left { 
+  flex: 1; 
+  position: relative; 
+}
+
+.modal-left .yellow-layer { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: #FACC05; 
+  z-index: 1; 
+}
+
+.modal-left .img-layer { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  z-index: 2; 
+}
+
+.modal-left .glassy-layer { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(250,204,5,0.4); 
+  backdrop-filter: blur(4px); 
+  z-index: 3; 
+}
+
+.modal-left .content { 
+  position: relative; 
+  z-index: 4; 
+  padding: 30px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  height: 100%; 
+  text-align: center; 
+  color: #000; 
+}
+
+.modal-left .content h2 { 
+  font-family: "Outfit", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 28px; 
+  margin-bottom: 10px; 
+  font-weight: 700;
+ 
+}
+
+.modal-left .content p { 
+  font-size: 16px; 
+}
+
+.modal-right { 
+  flex: 2; 
+  padding: 30px; 
+  background: #fff; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  position: relative; 
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+}
+
+.close-btn { 
+  position: absolute; 
+  top: 10px; 
+  right: 30px; 
+  background: transparent; 
+  border: none; 
+  font-size: 20px; 
+  color: #000; 
+  cursor: pointer; 
+}
+
+.form-row { 
+  display: flex; 
+  align-items: center; 
+  margin: 20px 0 15px; 
+}
+
+.input-label { 
+  width: 150px; 
+  font-size: 16px; 
+  color: #333; 
+}
+
+.form-input { 
+  flex: 1; 
+}
+
+.form-input input { 
+  width: 100%; 
+  padding: 10px; 
+  border: 1px solid #999; 
+  background: #f8f7f7; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  color: #000; 
+  transition: background 0.3s, border 0.3s; 
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+}
+
+.form-input input::placeholder { 
+  color: #D3D3D3; 
+}
+
+.form-input input:focus { 
+  background: #fff; 
+  border: 1px solid #D4A017; 
+}
+
+.btn-register, .btn-login { 
+  width: 50%; 
+  padding: 10px; 
+  border: 2px solid #D4A017; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  background: transparent; 
+  color: #D4A017; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  margin: 20px auto 10px; 
+  display: block; 
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+}
+
+.modal-right button:hover { 
+  background: #D4A017; 
+  color: #fff; 
+}
+
+.modal-right p { 
+  font-size: 14px; 
+  color: #D4A017; 
+  text-align: center; 
+  margin-top: 15px; 
+}
+
+.modal-right p a { 
+  text-decoration: none; 
+  color: #D4A017; 
+}
+
+.modal-right p a:hover { 
+  text-decoration: underline; 
+}
+
 @media (max-width: 768px) {
-  .modal { flex-direction: column; }
-  .modal-left, .modal-right { width: 100%; }
-  .modal-left { padding: 20px; height: 250px; }
-  .modal-right { padding: 20px; }
-  .form-row { flex-direction: column; align-items: flex-start; }
-  .input-label { width: 100%; margin-bottom: 5px; }
-  .modal-right button { width: 100%; }
+  .modal { 
+    flex-direction: column; 
+  }
+  .modal-left, .modal-right { 
+    width: 100%; 
+  }
+  .modal-left { 
+    padding: 20px; 
+    height: 250px; 
+  }
+  .modal-right { 
+    padding: 20px; 
+  }
+  .form-row { 
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+  .input-label { 
+    width: 100%; 
+    margin-bottom: 5px; 
+  }
+  .modal-right button { 
+    width: 100%; 
+  }
 }
 </style>
 </head>
 <body>
 <header>
   <div class="logo">
-    <img src="{% static 'images/icon.jpg' %}" alt="MephubLK Logo">
+    <img src="{% static 'images/icon.png' %}" alt="MephubLK Logo">
   </div>
   <nav id="main-nav">
     <ul>
@@ -110,6 +392,7 @@ nav ul li a { text-decoration: none; color: #333; }
     </ul>
   </nav>
 </header>
+
 <div id="loginModal" class="modal login-modal">
   <div class="modal-left">
     <div class="yellow-layer"></div>
@@ -141,6 +424,7 @@ nav ul li a { text-decoration: none; color: #333; }
     <p>Don't have an account? <a href="#" id="openRegisterModalLink">Register here</a></p>
   </div>
 </div>
+
 <div id="registerModal" class="modal register-modal">
   <div class="modal-left">
     <div class="yellow-layer"></div>
@@ -179,23 +463,33 @@ nav ul li a { text-decoration: none; color: #333; }
           <input type="password" id="reg-password2" name="password2" placeholder="********" required>
         </div>
       </div>
-      <button class ="btn-register" type="submit">Register</button>
+      <button class="btn-register" type="submit">Register</button>
     </form>
   </div>
 </div>
+
 <script>
 function openModal(modalId) {
   document.body.insertAdjacentHTML('beforeend', '<div class="modal-overlay" id="modalOverlay"></div>');
   document.getElementById(modalId).style.display = 'flex';
 }
+
 function closeModal() {
   document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
-  document.getElementById('modalOverlay').remove();
+  const overlay = document.getElementById('modalOverlay');
+  if(overlay) overlay.remove();
 }
+
 document.getElementById('openLoginModal').addEventListener('click', () => openModal('loginModal'));
 document.getElementById('openRegisterModal').addEventListener('click', () => openModal('registerModal'));
-document.getElementById('openRegisterModalLink').addEventListener('click', () => { closeModal(); openModal('registerModal'); });
-document.addEventListener('click', (event) => { if (event.target.id === 'modalOverlay') closeModal(); });
+document.getElementById('openRegisterModalLink').addEventListener('click', () => { 
+  closeModal(); 
+  openModal('registerModal'); 
+});
+
+document.addEventListener('click', (event) => { 
+  if (event.target.id === 'modalOverlay') closeModal(); 
+});
 </script>
 </body>
 </html>
