@@ -1,83 +1,272 @@
 {% extends "base.html" %}
-{% block title %}Home - MephubLK{% endblock %}
+{% block title %}MephubLK - Engineering Professionals Hub{% endblock %}
 {% block content %}
-<!-- Hero Section -->
 {% load static %}
-<div class="jumbotron text-center text-white" style="background: url('{% static 'images/hero.webp' %}') no-repeat center center; background-size: cover; position: relative; height: 400px;">
-  <div style="background-color: rgba(0,0,0,0.5); position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></div>
-  <div class="container" style="position: relative; z-index: 2;">
-    <h1 class="display-4">Connecting Sri Lanka’s Construction Experts with You</h1>
-    <form action="" method="get" class="mt-4">
-      <div class="input-group input-group-lg">
-        <input type="text" name="q" class="form-control" placeholder="Search for Consultants, Contractors, etc.">
-        <button type="submit" class="btn btn-outline-light">Search</button>
-      </div>
-    </form>
-    <div class="mt-4">
-      <a href="" class="btn btn-primary btn-lg mr-2">Browse Categories</a>
-      <a href="" class="btn btn-success btn-lg">Register as an Expert</a>
+
+<style>
+:root {
+    --primary: #0A2540;
+    --accent: #D4A017;
+    --light: #FFFFFF;
+    --dark: #1A1A1A;
+    --text: #2D3748;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-section {
+    background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.9)),
+                url('{% static 'images/construction-bg.webp' %}');
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0 4rem;
+    text-align: center;
+    color: var(--light);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    border-radius: 30px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: var(--light);
+    font-size: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.primary-btn {
+    background: var(--accent);
+    color: var(--primary);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--light);
+    border: 2px solid var(--light);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.section-heading {
+    text-align: center;
+    margin: 4rem 0;
+    color: var(--primary);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.category-card {
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid #e2e8f0;
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.professionals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.professional-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+
+.professional-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.professional-info {
+    padding: 1.5rem;
+    background: var(--light);
+}
+
+.projects-showcase {
+    background: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.project-card {
+    background: var(--light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.testimonials-section {
+    padding: 4rem 0;
+}
+
+.testimonial-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.cta-banner {
+    background: var(--primary);
+    color: var(--light);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 4rem 0;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+}
+</style>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Sri Lanka's Premier Construction Network</h1>
+        <p>Connect with certified professionals and discover ongoing projects nationwide</p>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search professionals, services, or projects...">
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="" class="primary-btn">Explore Projects</a>
+            <a href="" class="secondary-btn">Join as Professional</a>
+        </div>
     </div>
-  </div>
-</div>
+</section>
 
-<!-- Categories Section -->
-<div class="my-5">
-  <h2 class="text-center">Categories</h2>
-  <div class="row">
-    {% for category in categories %}
-      <div class="col-md-3 text-center">
-        <div class="card">
-          <div class="card-body">
-            <img src="{{ category.icon.url }}" alt="{{ category.name }}" style="width:60px;">
-            <h5 class="card-title mt-2">{{ category.name }}</h5>
-            <p class="card-text">{{ category.description }}</p>
-          </div>
+<main class="container">
+    <section class="professional-services">
+        <h2 class="section-heading">Professional Services</h2>
+        <div class="categories-grid">
+            <article class="category-card">
+                <div class="category-icon">
+                    <img src="{% static 'icons/architecture.svg' %}" alt="Architecture" width="40">
+                </div>
+                <h3>Architectural Design</h3>
+                <p>Certified architects and design specialists</p>
+            </article>
+            
+            <article class="category-card">
+                <div class="category-icon">
+                    <img src="{% static 'icons/engineering.svg' %}" alt="Engineering" width="40">
+                </div>
+                <h3>Engineering Services</h3>
+                <p>Structural, MEP, and civil engineering experts</p>
+            </article>
         </div>
-      </div>
-    {% endfor %}
-  </div>
-</div>
+    </section>
 
-<!-- Featured Profiles Section -->
-<div class="my-5">
-  <h2 class="text-center">Featured Profiles</h2>
-  <div class="row">
-    {% for profile in featured_profiles %}
-      <div class="col-md-4">
-        <div class="card">
-          <img src="{{ profile.image.url }}" class="card-img-top" alt="{{ profile.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ profile.name }}</h5>
-            <p class="card-text">{{ profile.profession }}</p>
-            <a href="{% url 'profiles:profile_detail' profile.id %}" class="btn btn-primary">View Profile</a>
-          </div>
+    <section class="featured-professionals">
+        <h2 class="section-heading">Featured Experts</h2>
+        <div class="professionals-grid">
+            <article class="professional-card">
+                <div class="professional-image" style="background-image: url({% static 'professionals/eng1.jpg' %})"></div>
+                <div class="professional-info">
+                    <h4>John Perera</h4>
+                    <p>Civil Engineering Specialist</p>
+                    <div class="expertise-tags">
+                        <span>Infrastructure</span>
+                        <span>Project Management</span>
+                    </div>
+                    <a href="#" class="primary-btn">View Profile</a>
+                </div>
+            </article>
         </div>
-      </div>
-    {% endfor %}
-  </div>
-</div>
+    </section>
 
-<!-- Testimonials Section -->
-<div class="my-5">
-  <h2 class="text-center">What Our Users Say</h2>
-  <div class="row">
-    {% for testimonial in testimonials %}
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">"{{ testimonial.content }}"</p>
-            <footer class="blockquote-footer">{{ testimonial.author }}</footer>
-          </div>
+    <section class="projects-showcase">
+        <h2 class="section-heading">Active Projects</h2>
+        <div class="professionals-grid">
+            <article class="project-card">
+                <div class="professional-image" style="background-image: url({% static 'projects/colombo-tower.jpg' %})"></div>
+                <div class="professional-info">
+                    <h4>Colombo Business Hub</h4>
+                    <div class="project-meta">
+                        <p>📍 Colombo 03</p>
+                        <p>📅 Completion: Q3 2025</p>
+                    </div>
+                    <a href="#" class="primary-btn">Project Details</a>
+                </div>
+            </article>
         </div>
-      </div>
-    {% endfor %}
-  </div>
-</div>
+    </section>
 
-<!-- Call-to-Action Banner -->
-<div class="jumbotron text-center" style="background-color: #E67E22;">
-  <h2 class="display-4 text-white">Join MephubLK Today!</h2>
-  <p class="lead text-white">Connect with top construction experts across Sri Lanka.</p>
-  <a href="" class="btn btn-light btn-lg">Register Now</a>
-</div>
+    <section class="testimonials-section">
+        <h2 class="section-heading">Client Success Stories</h2>
+        <div class="categories-grid">
+            <article class="testimonial-card">
+                <p>"MephubLK connected us with the perfect contractor for our commercial complex project."</p>
+                <div class="client-info">
+                    <h5>Rajapakse Holdings</h5>
+                    <p>Commercial Developers</p>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<section class="cta-banner">
+    <div class="hero-content">
+        <h2>Start Your Project Today</h2>
+        <p>Connect with Sri Lanka's top construction professionals</p>
+        <div class="cta-buttons">
+            <a href="" class="primary-btn">Get Started</a>
+            <a href="" class="secondary-btn">Contact Support</a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
